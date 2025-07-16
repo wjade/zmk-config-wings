@@ -19,7 +19,14 @@
 #
 ---
 include:
+  # For custom shield "wings":
   - board: seeeduino_xiao_ble
-    shield: corne_left
+    shield: wings_left
   - board: seeeduino_xiao_ble
-    shield: corne_right
+    shield: wings_right
+  
+  # Original Corne shield (commented out):
+  # - board: seeeduino_xiao_ble
+  #   shield: corne_left
+  # - board: seeeduino_xiao_ble
+  #   shield: corne_right
