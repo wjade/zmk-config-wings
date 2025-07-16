@@ -15,6 +15,7 @@
     default_layout: default_layout {
         compatible = "zmk,physical-layout";
         display-name = "Default";
+        transform = <&default_transform>;
         
         keys  //                     w   h    x    y     rot    rx    ry
             = <&key_physical_attrs 100 100    0    0       0     0     0>
