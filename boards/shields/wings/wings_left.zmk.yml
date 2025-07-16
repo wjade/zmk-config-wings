@@ -1,12 +1,10 @@
 file_format: "1"
-id: wings
-name: Wings
+id: wings_left
+name: Wings Left
 type: shield
 url: https://github.com/juewang/zmk-config-wings
 requires: [seeeduino_xiao_ble]
 features:
   - keys
-  - studio
 siblings:
-  - wings_left
   - wings_right
