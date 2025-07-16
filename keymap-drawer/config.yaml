@@ -1,0 +1,48 @@
+draw_config:
+  dark_mode: auto
+  separate_combo_diagrams: true
+  combo_diagrams_scale: 2
+  key_width: 60
+  key_height: 56
+  split_gap: 30
+  combo_w: 24
+  combo_h: 22
+  key_rx: 6
+  key_ry: 6
+
+parse_config:
+  mark_alternate_layer_activators: true
+  sticky_label: $$t{}$$
+  trans_legend:
+    t: $$t$$
+    type: trans
+
+  zmk_keycode_map:
+    EXCLAMATION: "!"
+    DOLLAR: "$"
+    AMPERSAND: "&"
+    LEFT_PARENTHESIS: "("
+    RIGHT_PARENTHESIS: ")"
+    ASTERISK: "*"
+    PLUS: "+"
+    COMMA: ","
+    MINUS: "-"
+    PERIOD: "."
+    SLASH: "/"
+    COLON: ":"
+    SEMICOLON: ";"
+    LESS_THAN: "<"
+    EQUAL: "="
+    GREATER_THAN: ">"
+    QUESTION: "?"
+    AT_SIGN: "@"
+    LEFT_BRACKET: "["
+    BACKSLASH: "\\"
+    RIGHT_BRACKET: "]"
+    CARET: "^"
+    UNDERSCORE: "_"
+    GRAVE: "`"
+    LEFT_BRACE: "{"
+    PIPE: "|"
+    RIGHT_BRACE: "}"
+    TILDE: "~"

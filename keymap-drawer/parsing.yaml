@@ -1,0 +1,5 @@
+parse_config:
+  zmk_combos:
+    # Add combo configurations here if you have any
+  zmk_behaviors:
+    # Add custom behavior configurations here if needed
