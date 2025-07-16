@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-#include "wings.dtsi"
+#include "wings.overlay"
 
 &default_transform {
     col-offset = <6>;
