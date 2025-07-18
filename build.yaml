@@ -33,6 +33,16 @@ include:
     snippet: studio-rpc-usb-uart
     artifact-name: wings_right_with_studio
   
+  # Settings reset builds - flash these to clear all stored settings
+  - board: seeeduino_xiao_ble
+    shield: wings_left
+    snippet: settings_reset
+    artifact-name: wings_left_settings_reset
+  - board: seeeduino_xiao_ble
+    shield: wings_right
+    snippet: settings_reset
+    artifact-name: wings_right_settings_reset
+  
   # Original Corne shield (commented out):
   # - board: seeeduino_xiao_ble
   #   shield: corne_left
