@@ -35,13 +35,9 @@ include:
   
   # Settings reset builds - flash these to clear all stored settings
   - board: seeeduino_xiao_ble
-    shield: wings_left
-    snippet: settings_reset
-    artifact-name: wings_left_settings_reset
-  - board: seeeduino_xiao_ble
-    shield: wings_right
-    snippet: settings_reset
-    artifact-name: wings_right_settings_reset
+    shield: settings_reset
+    cmake-args: -DCONFIG_ZMK_SETTINGS_RESET_ON_START=y
+    artifact-name: wings_settings_reset
   
   # Original Corne shield (commented out):
   # - board: seeeduino_xiao_ble
