@@ -67,6 +67,12 @@ include:
     snippet: zmk-usb-logging
     artifact-name: wings_row2col_right_debug
   
+  # Standalone test build (no split, for debugging)
+  - board: seeeduino_xiao_ble
+    shield: wings_standalone
+    cmake-args: -DCONFIG_SHIELD_WINGS_STANDALONE=y -DZMK_CONFIG_FILE=/tmp/zmk-config/config/wings_standalone.conf
+    artifact-name: wings_standalone_test
+  
   # Original Corne shield (commented out):
   # - board: seeeduino_xiao_ble
   #   shield: corne_left

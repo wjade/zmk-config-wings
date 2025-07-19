@@ -1,0 +1,17 @@
+/*
+ * Standalone wings for testing single board
+ */
+
+#include "wings.overlay"
+
+&kscan0 {
+    // Use only the left half columns
+    col-gpios
+        = <&xiao_d 3 GPIO_ACTIVE_HIGH>  // Column 0 - D3
+        , <&xiao_d 2 GPIO_ACTIVE_HIGH>  // Column 1 - D2
+        , <&xiao_d 1 GPIO_ACTIVE_HIGH>  // Column 2 - D1
+        , <&xiao_d 0 GPIO_ACTIVE_HIGH>  // Column 3 - D0
+        , <&xiao_d 5 GPIO_ACTIVE_HIGH>  // Column 4 - D5
+        , <&xiao_d 4 GPIO_ACTIVE_HIGH>  // Column 5 - D4
+        ;
+};

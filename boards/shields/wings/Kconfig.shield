@@ -12,3 +12,6 @@ config SHIELD_WINGS_ROW2COL_LEFT
 
 config SHIELD_WINGS_ROW2COL_RIGHT
     def_bool $(shields_list_contains,wings_row2col_right)
+
+config SHIELD_WINGS_STANDALONE
+    def_bool $(shields_list_contains,wings_standalone)
