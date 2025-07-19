@@ -1,0 +1,34 @@
+/*
+ * Row2col variant for right half
+ */
+
+#include "wings.overlay"
+
+&default_transform {
+    col-offset = <6>;
+};
+
+&kscan0 {
+    diode-direction = "row2col";
+    
+    row-gpios;  // Clear existing row-gpios
+    col-gpios;  // Clear existing col-gpios
+    
+    // For row2col, rows become outputs and columns become inputs
+    row-gpios
+        = <&xiao_d 9 GPIO_ACTIVE_HIGH>  // Row 0 - D9 (top row)
+        , <&xiao_d 8 GPIO_ACTIVE_HIGH>  // Row 1 - D8
+        , <&xiao_d 7 GPIO_ACTIVE_HIGH>  // Row 2 - D7
+        , <&xiao_d 6 GPIO_ACTIVE_HIGH>  // Row 3 - D6 (bottom main row)
+        , <&xiao_d 10 GPIO_ACTIVE_HIGH> // Row 4 - D10 (thumb row)
+        ;
+        
+    col-gpios
+        = <&xiao_d 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Column 6 - D4
+        , <&xiao_d 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Column 7 - D5
+        , <&xiao_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Column 8 - D0
+        , <&xiao_d 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Column 9 - D1
+        , <&xiao_d 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Column 10 - D2
+        , <&xiao_d 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Column 11 - D3
+        ;
+};

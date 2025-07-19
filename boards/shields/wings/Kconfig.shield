@@ -6,3 +6,9 @@ config SHIELD_WINGS_LEFT
 
 config SHIELD_WINGS_RIGHT
     def_bool $(shields_list_contains,wings_right)
+
+config SHIELD_WINGS_ROW2COL_LEFT
+    def_bool $(shields_list_contains,wings_row2col_left)
+
+config SHIELD_WINGS_ROW2COL_RIGHT
+    def_bool $(shields_list_contains,wings_row2col_right)

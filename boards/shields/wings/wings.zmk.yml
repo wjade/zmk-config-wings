@@ -10,3 +10,5 @@ features:
 siblings:
   - wings_left
   - wings_right
+  - wings_row2col_left
+  - wings_row2col_right

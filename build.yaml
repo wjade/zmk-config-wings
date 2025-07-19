@@ -39,6 +39,34 @@ include:
     cmake-args: -DCONFIG_ZMK_SETTINGS_RESET_ON_START=y
     artifact-name: wings_settings_reset
   
+  # Debug builds with USB logging enabled
+  - board: seeeduino_xiao_ble
+    shield: wings_left
+    snippet: zmk-usb-logging
+    artifact-name: wings_left_debug
+  - board: seeeduino_xiao_ble
+    shield: wings_right
+    snippet: zmk-usb-logging
+    artifact-name: wings_right_debug
+  
+  # Row2col diode direction builds
+  - board: seeeduino_xiao_ble
+    shield: wings_row2col_left
+    artifact-name: wings_row2col_left
+  - board: seeeduino_xiao_ble
+    shield: wings_row2col_right
+    artifact-name: wings_row2col_right
+  
+  # Row2col debug builds
+  - board: seeeduino_xiao_ble
+    shield: wings_row2col_left
+    snippet: zmk-usb-logging
+    artifact-name: wings_row2col_left_debug
+  - board: seeeduino_xiao_ble
+    shield: wings_row2col_right
+    snippet: zmk-usb-logging
+    artifact-name: wings_row2col_right_debug
+  
   # Original Corne shield (commented out):
   # - board: seeeduino_xiao_ble
   #   shield: corne_left
