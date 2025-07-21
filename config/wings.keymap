@@ -27,6 +27,22 @@
                         bindings = <&bootloader>;
                         layers = <1>; // Only on lower layer
                 };
+                
+                combo_studio_unlock {
+                        timeout-ms = <50>;
+                        key-positions = <0 1>; // ESC + 1 keys (top left corner)
+                        bindings = <&studio_unlock>;
+                };
+        };
+        
+        behaviors {
+                compatible = "zmk,behaviors";
+                
+                studio_unlock: studio_unlock {
+                        compatible = "zmk,behavior-studio-unlock";
+                        #binding-cells = <0>;
+                        display-name = "Studio Unlock";
+                };
         };
 
         keymap {
@@ -58,7 +74,7 @@
    &kp GRAVE  &kp F1       &kp F2       &kp F3       &kp F4       &kp F5         &kp F6   &kp F7   &kp F8 &kp F9    &kp F10 &kp F11
    &kp TAB    &kp EXCL     &kp AT       &kp HASH     &kp DLLR     &kp PRCNT      &kp CARET &kp AMPS &kp ASTRK &kp LPAR &kp RPAR &kp F12
    &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
-   &kp LSHFT  &bootloader  &sys_reset   &trans       &trans       &trans         &trans   &trans   &trans &trans    &sys_reset &bootloader
+   &kp LSHFT  &bootloader  &sys_reset   &trans       &trans       &trans         &trans   &trans   &trans &studio_unlock &sys_reset &bootloader
         &kp LALT &kp LCTRL &kp LGUI &trans &kp SPACE      &kp RET &trans &kp BSPC &kp DEL &kp RALT
                         >;
                 };
