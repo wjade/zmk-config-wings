@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+
+# Build artifacts
+build/
+*.uf2
+
+# West/Zephyr workspace (for local builds)
+.west/
+zmk/
+modules/
+tools/
+zephyr/
+bootloader/
+
+# Editor
+.vscode/
+*.swp
+*.swo
+*~
+
+# Python
+__pycache__/
+*.pyc
+.venv/

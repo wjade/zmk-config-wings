@@ -21,17 +21,47 @@ This is a ZMK (Zephyr-based Mechanical Keyboard) firmware configuration reposito
 
 ## Common Development Tasks
 
-### Building Firmware Locally
+### Testing Builds Locally
+
+#### Option 1: Using Docker (Recommended)
+```bash
+# Make script executable
+chmod +x build-docker.sh
+
+# Build all firmware variants
+./build-docker.sh
+
+# Clean build artifacts
+./build-docker.sh clean
+```
+
+This mimics the exact GitHub Actions environment and is the most reliable way to test locally.
+
+#### Option 2: Native West Build
+```bash
+# Make script executable  
+chmod +x build-local.sh
+
+# Build all firmware variants
+./build-local.sh
+
+# Clean build artifacts
+./build-local.sh clean
+```
+
+Requires local Zephyr SDK installation. See [ZMK docs](https://zmk.dev/docs/development/setup) for setup instructions.
+
+#### Option 3: Manual West Commands
 ```bash
 # Initialize west workspace (first time only)
 west init -l config
 west update
 
-# Build firmware for left half
-west build -s zmk/app -b seeeduino_xiao_ble -- -DSHIELD=corne_left -DZMK_CONFIG="${PWD}/config"
+# Build firmware for wings left half
+west build -s zmk/app -b seeeduino_xiao_ble -- -DSHIELD=wings_left -DZMK_CONFIG="${PWD}/config"
 
-# Build firmware for right half
-west build -s zmk/app -b seeeduino_xiao_ble -- -DSHIELD=corne_right -DZMK_CONFIG="${PWD}/config"
+# Build firmware for wings right half
+west build -s zmk/app -b seeeduino_xiao_ble -- -DSHIELD=wings_right -DZMK_CONFIG="${PWD}/config"
 ```
 
 ### GitHub Actions Build
