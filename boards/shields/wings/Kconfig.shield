@@ -15,3 +15,6 @@ config SHIELD_WINGS_ROW2COL_RIGHT
 
 config SHIELD_WINGS_STANDALONE
     def_bool $(shields_list_contains,wings_standalone)
+
+config SHIELD_WINGS_STUDIO
+    def_bool $(shields_list_contains,wings_studio)
