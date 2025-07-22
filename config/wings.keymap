@@ -65,11 +65,11 @@
             //        | ALT | CTL | GUI | LWR | SPC |   | ENT | RSE  | BSPC| DEL | ALT |
 
             bindings = <
-&kp ESC    &kp N1                &kp N2                &kp N3                &kp N4                &kp N5     &kp N6      &kp N7                          &kp N8     &kp N9   &kp N0    &kp BSPC
-&kp TAB    &kp Q                 &kp W                 &kp E                 &kp R                 &kp T      &kp Y       &kp U                           &kp I      &kp O    &kp P     &kp BSLH
-&kp LCTRL  &homerow_mod RG(A) A  &lt 3 S               &lt 2 D               &lt 1 F               &kp G      &kp H       &lt 1 J                         &lt 2 K    &lt 3 L  &kp SEMI  &kp SQT
-&kp LSHFT  &kp Z                 &homerow_mod RG(X) X  &homerow_mod RG(C) C  &homerow_mod RG(V) V  &kp B      &kp N       &kp M                           &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
-           &kp RET               &mt_fast LSHIFT TAB   &kp LGUI              &mo 1                 &kp SPACE  &kp ESCAPE  &mt_fast RIGHT_SHIFT BACKSPACE  &kp SPACE  &kp DEL  &kp RALT
+&kp ESC        &kp N1                &kp N2                 &kp N3                &kp N4                &kp N5     &kp N6                     &kp N7                      &kp N8     &kp N9   &kp N0    &kp BSPC
+&kp TAB        &kp Q                 &kp W                  &kp E                 &kp R                 &kp T      &kp Y                      &kp U                       &kp I      &kp O    &kp P     &kp BACKSPACE
+&kp LA(LCTRL)  &homerow_mod RG(A) A  &lt 3 S                &lt 2 D               &lt 1 F               &kp G      &kp H                      &lt 1 J                     &lt 2 K    &lt 3 L  &kp SEMI  &kp SQT
+&kp LSHFT      &kp Z                 &homerow_mod RG(X) X   &homerow_mod RG(C) C  &homerow_mod RG(V) V  &kp B      &kp N                      &kp M                       &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
+               &kp TAB               &mt_fast LSHIFT ENTER  &kp LGUI              &mo 1                 &kp SPACE  &mt_fast RIGHT_GUI ESCAPE  &mt_fast RIGHT_SHIFT SPACE  &kp SPACE  &kp DEL  &kp RALT
             >;
         };
 
