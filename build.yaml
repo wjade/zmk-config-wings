@@ -27,12 +27,10 @@ include:
   - board: seeeduino_xiao_ble
     shield: wings_left
     snippet: studio-rpc-usb-uart
-    cmake-args: -DCONFIG_ZMK_STUDIO=y
     artifact-name: wings_left_with_studio
   - board: seeeduino_xiao_ble
     shield: wings_right
     snippet: studio-rpc-usb-uart
-    cmake-args: -DCONFIG_ZMK_STUDIO=y
     artifact-name: wings_right_with_studio
   
   # Settings reset builds - flash these to clear all stored settings
