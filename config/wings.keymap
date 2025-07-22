@@ -28,6 +28,19 @@
         };
     };
 
+    behaviors {
+        mt_fast: mt_fast {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MT_FAST";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <300>;
+            quick-tap-ms = <200>;
+            require-prior-idle-ms = <125>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -40,11 +53,11 @@
             //        | ALT | CTL | GUI | LWR | SPC |   | ENT | RSE  | BSPC| DEL | ALT |
 
             bindings = <
-&kp ESC    &kp N1    &kp N2     &kp N3    &kp N4   &kp N5     &kp N6   &kp N7   &kp N8     &kp N9   &kp N0    &kp BSPC
-&kp TAB    &kp Q     &kp W      &kp E     &kp R    &kp T      &kp Y    &kp U    &kp I      &kp O    &kp P     &kp BSLH
-&kp LCTRL  &kp A     &lt 3 S    &lt 2 D   &lt 1 F  &kp G      &kp H    &lt 1 J  &lt 2 K    &lt 3 L  &kp SEMI  &kp SQT
-&kp LSHFT  &kp Z     &kp X      &kp C     &kp V    &kp B      &kp N    &kp M    &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
-           &kp LALT  &kp LCTRL  &kp LGUI  &mo 1    &kp SPACE  &kp RET  &mo 2    &kp BSPC   &kp DEL  &kp RALT
+&kp ESC    &kp N1   &kp N2               &kp N3    &kp N4   &kp N5     &kp N6      &kp N7                          &kp N8     &kp N9   &kp N0    &kp BSPC
+&kp TAB    &kp Q    &kp W                &kp E     &kp R    &kp T      &kp Y       &kp U                           &kp I      &kp O    &kp P     &kp BSLH
+&kp LCTRL  &kp A    &lt 3 S              &lt 2 D   &lt 1 F  &kp G      &kp H       &lt 1 J                         &lt 2 K    &lt 3 L  &kp SEMI  &kp SQT
+&kp LSHFT  &kp Z    &kp X                &kp C     &kp V    &kp B      &kp N       &kp M                           &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
+           &kp RET  &mt_fast LSHIFT TAB  &kp LGUI  &mo 1    &kp SPACE  &kp ESCAPE  &mt_fast RIGHT_SHIFT BACKSPACE  &kp SPACE  &kp DEL  &kp RALT
             >;
         };
 
