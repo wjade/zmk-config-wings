@@ -36,6 +36,11 @@
             bindings = <&kp RG(P)>;
             key-positions = <39 40>;
         };
+
+        ctrl-a {
+            bindings = <&kp RG(A)>;
+            key-positions = <25 26>;
+        };
     };
 
     behaviors {
