@@ -26,6 +26,16 @@
             bindings = <&bootloader>;
             layers = <1>; // Only on lower layer
         };
+
+        Copy {
+            bindings = <&kp RG(C)>;
+            key-positions = <38 39>;
+        };
+
+        Paste {
+            bindings = <&kp RG(P)>;
+            key-positions = <39 40>;
+        };
     };
 
     behaviors {
@@ -50,6 +60,15 @@
             quick-tap-ms = <150>;
             require-prior-idle-ms = <100>;
             flavor = "tap-preferred";
+        };
+    };
+
+    macros {
+        p: p {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none>;
+            label = "P";
         };
     };
 
