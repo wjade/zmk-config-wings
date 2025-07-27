@@ -4,30 +4,48 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-This is a ZMK (Zephyr-based Mechanical Keyboard) firmware configuration repository for a Corne keyboard. The repository uses the Seeeduino XIAO BLE board and builds firmware for both left and right keyboard halves.
+This is a ZMK (Zephyr-based Mechanical Keyboard) firmware configuration repository for a custom keyboard called "Wings" (named "Jade Wing" in Bluetooth). The repository builds firmware for a split keyboard using Seeeduino XIAO BLE boards.
 
 ## Architecture & Structure
 
-- **config/**: Contains keyboard-specific configuration
-  - `corne.keymap`: Defines the keyboard layout and layers (default, lower, raise)
-  - `corne.conf`: Configuration options for features like RGB underglow and OLED display
-  - `west.yml`: West manifest for ZMK firmware dependency management
+### Core Configuration Files
+- **build.yaml**: Defines all build configurations including:
+  - Standard left/right builds
+  - ZMK Studio-enabled builds
+  - Debug builds with USB logging
+  - Row2col diode direction variants
+  - Standalone test builds
+  - Settings reset builds
 
-- **build.yaml**: GitHub Actions build configuration specifying board/shield combinations
+- **config/**: Keyboard configuration directory
+  - `wings.keymap`: Main keymap with 3 layers (default, lower, raise)
+  - `wings.conf`: Configuration options (Bluetooth name, Studio support, debug settings)
+  - `wings.json`: Keymap visualization metadata
+  - `wings.studio.config`: ZMK Studio configuration
+  - `west.yml`: West manifest pointing to ZMK v0.2
 
-- **boards/shields/**: Custom board/shield definitions (currently empty)
+### Custom Shield Definition
+- **boards/shields/wings/**: Custom shield implementation
+  - `wings.dtsi`: Core matrix definition (5 rows × 12 columns)
+  - `wings_left.overlay` / `wings_right.overlay`: Split keyboard overlays
+  - `wings_row2col_left.overlay` / `wings_row2col_right.overlay`: Alternative diode direction
+  - `wings.zmk.yml`: Shield metadata for ZMK build system
+  - `Kconfig.shield` / `Kconfig.defconfig`: Build system configuration
 
-- **zephyr/module.yml**: Zephyr module configuration
+### Physical Layout
+- 5×12 matrix (60 keys total)
+- Split keyboard design (30 keys per half)
+- GPIO pins on Seeeduino XIAO BLE:
+  - Rows: D9, D8, D7, D6, D10
+  - Columns: Different per split half
+- Col2row diode direction (with row2col variants available)
 
 ## Common Development Tasks
 
-### Testing Builds Locally
+### Building Firmware
 
 #### Option 1: Using Docker (Recommended)
 ```bash
-# Make script executable
-chmod +x build-docker.sh
-
 # Build all firmware variants
 ./build-docker.sh
 
@@ -35,13 +53,8 @@ chmod +x build-docker.sh
 ./build-docker.sh clean
 ```
 
-This mimics the exact GitHub Actions environment and is the most reliable way to test locally.
-
 #### Option 2: Native West Build
 ```bash
-# Make script executable  
-chmod +x build-local.sh
-
 # Build all firmware variants
 ./build-local.sh
 
@@ -49,42 +62,72 @@ chmod +x build-local.sh
 ./build-local.sh clean
 ```
 
-Requires local Zephyr SDK installation. See [ZMK docs](https://zmk.dev/docs/development/setup) for setup instructions.
-
 #### Option 3: Manual West Commands
 ```bash
 # Initialize west workspace (first time only)
 west init -l config
 west update
 
-# Build firmware for wings left half
+# Build specific variants
 west build -s zmk/app -b seeeduino_xiao_ble -- -DSHIELD=wings_left -DZMK_CONFIG="${PWD}/config"
-
-# Build firmware for wings right half
 west build -s zmk/app -b seeeduino_xiao_ble -- -DSHIELD=wings_right -DZMK_CONFIG="${PWD}/config"
+
+# Build with ZMK Studio support
+west build -s zmk/app -b seeeduino_xiao_ble -- -DSHIELD=wings_left -DZMK_CONFIG="${PWD}/config" -S studio-rpc-usb-uart
 ```
 
-### GitHub Actions Build
+### Validation and Testing
+```bash
+# Validate configuration structure
+./validate-config.sh
 
-The repository uses GitHub Actions for automated firmware builds. The workflow is configured in `.github/workflows/build.yml` and triggers on:
+# Debug builds with USB logging
+./debug-zmk.sh
+```
+
+### GitHub Actions
+
+The repository uses automated builds via `.github/workflows/build.yml`. Builds trigger on:
 - Pushes to main/master branches
 - Pull requests
 - Manual workflow dispatch
 
-The workflow automatically builds firmware for both keyboard halves based on the configurations in `build.yaml`. After a successful build, firmware artifacts (`.uf2` files) will be available for download from the Actions tab.
+Artifacts are available for download after successful builds.
 
 ## Key Configuration Points
 
-1. **Keymap Modification**: Edit `config/corne.keymap` to change key layouts. The file uses Device Tree syntax with three layers defined.
+### Keymap Structure
+- **Default layer**: Standard QWERTY with number row
+- **Lower layer**: F-keys, navigation, Bluetooth controls (BT1-BT5)
+- **Raise layer**: Symbols and punctuation
+- **Combos**: 
+  - ESC + BSPC on lower layer = System reset
+  - 0 + BSPC on lower layer = Bootloader
 
-2. **Feature Toggles**: Uncomment lines in `config/corne.conf` to enable:
-   - RGB underglow: `CONFIG_ZMK_RGB_UNDERGLOW=y`
-   - OLED display: `CONFIG_ZMK_DISPLAY=y`
+### ZMK Studio Support
+Enabled by default in `wings.conf`:
+- `CONFIG_ZMK_STUDIO=y`
+- `CONFIG_ZMK_STUDIO_LOCKING=n` (unlocked for development)
 
-3. **Board Configuration**: Currently configured for `seeeduino_xiao_ble` board. To change boards, update `build.yaml`.
+### Feature Toggles
+Uncomment in `config/wings.conf` to enable:
+- RGB underglow: `CONFIG_ZMK_RGB_UNDERGLOW=y`
+- OLED display: `CONFIG_ZMK_DISPLAY=y`
+- USB logging: `CONFIG_ZMK_USB_LOGGING=y`
+
+### Build Variants
+The repository supports multiple build configurations:
+1. **Standard builds**: Basic left/right firmware
+2. **Studio builds**: With ZMK Studio RPC support
+3. **Debug builds**: USB logging enabled
+4. **Row2col builds**: Alternative diode direction
+5. **Standalone build**: Single unified firmware for testing
+6. **Settings reset**: Clears all stored settings
 
 ## Important Notes
 
-- The firmware uses ZMK v0.2 as specified in `config/west.yml`
-- Bluetooth profiles are configured in the lower layer (BT1-BT5)
-- The keymap follows standard Corne 3x6+3 layout
+- Bluetooth device name: "Jade Wing" (max 16 characters)
+- Board: `seeeduino_xiao_ble` exclusively
+- Matrix scanning debounce: 5ms press/release
+- The shields support ZMK Studio for real-time keymap editing
+- Debug logs available via USB when debug builds are used
