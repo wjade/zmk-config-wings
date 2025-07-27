@@ -29,17 +29,17 @@
 
         Copy {
             bindings = <&kp RG(C)>;
-            key-positions = <38 39>;
+            key-positions = <>;
         };
 
         Paste {
             bindings = <&kp RG(V)>;
-            key-positions = <39 40>;
+            key-positions = <>;
         };
 
         ctrl-a {
             bindings = <&kp RG(A)>;
-            key-positions = <25 26>;
+            key-positions = <>;
         };
     };
 
