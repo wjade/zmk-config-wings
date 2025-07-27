@@ -79,7 +79,6 @@
         leader: leader {
             compatible = "zmk,behavior-leader-key";
             #binding-cells = <0>;
-            timeout-ms = <1000>;  // 1 second timeout for sequences
             
             // Bluetooth shortcuts
             bt0 {
