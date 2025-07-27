@@ -41,6 +41,11 @@
             bindings = <&kp RG(A)>;
             key-positions = <>;
         };
+
+        backspace {
+            bindings = <&kp BACKSPACE>;
+            key-positions = <31 32>;
+        };
     };
 
     behaviors {
