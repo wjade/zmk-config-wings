@@ -33,7 +33,7 @@
         };
 
         Paste {
-            bindings = <&kp RG(P)>;
+            bindings = <&kp RG(V)>;
             key-positions = <39 40>;
         };
 
